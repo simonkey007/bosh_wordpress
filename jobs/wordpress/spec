@@ -1,0 +1,57 @@
+---
+name: wordpress
+
+templates:
+  wordpress_ctl:      bin/wordpress_ctl
+  httpd.conf.erb:     config/httpd.conf
+  wp-config.php.erb:  config/wp-config.php
+  php.ini.erb:        config/php.ini
+  idmapd.conf.erb:    config/idmapd.conf
+  nfs-common:         config/nfs-common
+
+packages:
+  - mysqlclient
+  - apache2
+  - php5
+  - wordpress
+
+properties:
+  wordpress.port:
+    description: TCP port wordpress server listen on
+    default: 8008
+  wordpress.admin:
+    description: Email address of server administrator
+  wordpress.servername:
+    description: Name of the virtual server
+  wordpress.db.name:
+    description: Database for the MySQL database connection
+  wordpress.db.user:
+    description: User for the MySQL database connection
+  wordpress.db.pass:
+    description: Password for the MySQL database connection
+  mysql.address:
+    description: Address of the MySQL database connection
+  wordpress.auth_key:
+    description: Wordpress Authentication Unique Keys (AUTH_KEY)
+  wordpress.secure_auth_key:
+    description: Wordpress Authentication Unique Keys (SECURE_AUTH_KEY)
+  wordpress.logged_in_key:
+    description: Wordpress Authentication Unique Keys (LOGGED_IN_KEY)
+  wordpress.nonce_key:
+    description: Wordpress Authentication Unique Keys (NONCE_KEY)
+  wordpress.auth_salt:
+    description: Wordpress Authentication Unique Salts (AUTH_SALT)
+  wordpress.secure_auth_salt:
+    description: Wordpress Authentication Unique Salts (SECURE_AUTH_SALT)
+  wordpress.logged_in_salt:
+    description: Wordpress Authentication Unique Salts (LOGGED_IN_SALT)
+  wordpress.nonce_salt:
+    description: Wordpress Authentication Unique Salts (NONCE_SALT)
+  nfs_server.address:
+    description: Address of the NFSv4 server
+  nfs_server.share:
+    description: Remote NFSv4 directory to mount
+    default: "/"
+  nfs_server.idmapd_domain:
+    description: Local NFSv4 domain name
+    default: localdomain

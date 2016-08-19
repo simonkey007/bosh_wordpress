@@ -1,0 +1,11 @@
+dev_releases
+.blobs
+blobs
+config/dev.yml
+config/private.yml
+releases
+.dev_builds
+.final_builds
+.idea
+*.swp
+*~

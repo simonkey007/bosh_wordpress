@@ -1,0 +1,22 @@
+---
+name: nginx
+
+templates:
+  nginx_ctl:      bin/nginx_ctl
+  nginx.conf.erb: config/nginx.conf
+  mime.types:     config/mime.types
+
+packages:
+  - nginx
+
+properties:
+  nginx.workers:
+    description: Number of nginx worker processes
+    default: 1
+  wordpress.servername:
+    description: Name of the virtual server
+  wordpress.port:
+    description: TCP port upstream (backends) servers listen on
+    default: 8008
+  wordpress.servers:
+    description: Array of upstream (backends) servers

@@ -1,0 +1,22 @@
+---
+name: debian_nfs_server
+
+templates:
+  rpc_nfsd_ctl: bin/rpc_nfsd_ctl
+  rpc_mountd_ctl: bin/rpc_mountd_ctl
+  exports.erb: config/exports
+  idmapd.conf.erb: config/idmapd.conf
+
+packages:
+  - common
+  - debian_nfs_server
+
+properties:
+  debian_nfs_server.no_root_squash:
+    description: Turn off NFS root squashing (Boolean)
+    default: true
+  nfs_server.network:
+    description: Allowed NFS clients (exports file format)
+  nfs_server.idmapd_domain:
+    description: Local NFSv4 domain name
+    default: localdomain

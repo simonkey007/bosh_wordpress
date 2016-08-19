@@ -1,0 +1,5 @@
+<% no_root_squash = '' %>
+<% if_p("debian_nfs_server.no_root_squash") do %>
+<% no_root_squash = ',no_root_squash' %>
+<% end %>
+/var/vcap/store/shared        <%= p("nfs_server.network") %>(rw,fsid=0,no_subtree_check,sync<%= no_root_squash %>)

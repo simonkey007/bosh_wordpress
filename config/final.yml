@@ -1,0 +1,7 @@
+---
+final_name: wordpress
+min_cli_version: 1.0.3
+blobstore:
+  provider: local
+  options:
+    blobstore_path: /tmp/blobs
