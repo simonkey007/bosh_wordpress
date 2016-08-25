@@ -12,7 +12,6 @@ RUN rm /tmp/spiff_linux_amd64.zip
 RUN gem install bundler --no-rdoc --no-ri
 RUN gem install bosh_cli -v 1.3184.1.0 --no-rdoc --no-ri
 
-ADD cf-cli/cf-linux-amd64.tgz /usr/bin/
 ADD https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 /usr/bin/jq
 RUN chmod 775 /usr/bin/jq
 
@@ -27,4 +26,4 @@ ENV GOPATH /gopath
 ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 
 RUN go get github.com/bronze1man/yaml2json
-RUN go get github.com/cloudfoundry-community/humanize-manifest
+RUN go get github.com/hybris/humanize-manifest
