@@ -4,7 +4,7 @@ blobs
 config/dev.yml
 config/private.yml
 releases
-pipeline
+pipeline/jobs/pipeline_org.yml
 .dev_builds
 .final_builds
 .idea
