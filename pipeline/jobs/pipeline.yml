@@ -22,7 +22,7 @@ jobs:
     resource: git-repo
     trigger: true
   - task: create_release
-    file: git_repo/pipeline/tasks/create-release.yml
+    file: pipeline/pipeline/tasks/create-release.yml
 - name: deploy-wordpress
   plan:
   - aggregate:

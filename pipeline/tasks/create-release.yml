@@ -7,4 +7,4 @@ inputs:
 - name: git_repo
 
 run:
-  path: git_repo/pipeline/bin/create-release.sh
+  path: pipeline/pipeline/bin/create-release.sh
