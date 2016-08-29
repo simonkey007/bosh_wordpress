@@ -18,14 +18,11 @@ jobs:
         build: git-repo/ci_image
 - name: create-release
   plan:
-  - aggregate:
-    - get: pipeline
-      resource: git-repo
-      trigger: true
-    platform: linux
-    image: docker:///teamidefix/cf-deployments-pipeline
-    run:
-      path: pipeline/pipeline/bin/create-release.sh
+  - get: my_repo
+    resource: git-repo
+    trigger: true
+  - task: unit
+    file: pipeline/pipeline/tasks/create-release.yml
 - name: deploy-wordpress
   plan:
   - aggregate:

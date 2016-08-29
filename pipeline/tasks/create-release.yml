@@ -4,16 +4,7 @@ platform: linux
 image: docker:///teamidefix/cf-deployments-pipeline
 
 inputs:
-- name: pipeline
-
-outputs:
-- name: create-release
-  path: output
-- name: release-body
-  path: body
-- name: version
+- name: new_release
 
 run:
   path: pipeline/pipeline/bin/create-release.sh
-
-params:
