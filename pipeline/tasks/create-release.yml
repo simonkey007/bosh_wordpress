@@ -1,7 +1,9 @@
 ---
 platform: linux
 
-image: docker:///teamidefix/cf-deployments-pipeline
+image_resource:
+  type: docker-image
+  source: {repository: teamidefix/cf-deployments-pipeline}
 
 inputs:
 - name: git-repo
