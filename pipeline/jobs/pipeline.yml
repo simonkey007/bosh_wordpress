@@ -22,8 +22,10 @@ jobs:
     - get: pipeline
       resource: git-repo
       trigger: true
-  - run:
-    path: pipeline/pipeline/bin/create-release.sh
+    platform: linux
+    image: docker:///teamidefix/cf-deployments-pipeline
+    run:
+      path: pipeline/pipeline/bin/create-release.sh
 - name: deploy-wordpress
   plan:
   - aggregate:
