@@ -4,7 +4,7 @@ platform: linux
 image: docker:///teamidefix/cf-deployments-pipeline
 
 inputs:
-- name: new_release
+- name: my_repo
 
 run:
-  path: pipeline/pipeline/bin/create-release.sh
+  path: my_repo/pipeline/bin/create-release.sh
