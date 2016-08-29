@@ -7,4 +7,4 @@ inputs:
 - name: git-repo
 
 run:
-  path: ./git-repo/pipeline/bin/create-release.sh
+  path: ls
