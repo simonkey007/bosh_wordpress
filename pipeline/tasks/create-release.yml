@@ -4,7 +4,7 @@ platform: linux
 image: docker:///teamidefix/cf-deployments-pipeline
 
 inputs:
-- name: git_repo
+- name: git-repo
 
 run:
-  path: pipeline/pipeline/bin/create-release.sh
+  path: ./git-repo/pipeline/bin/create-release.sh

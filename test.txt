@@ -8,20 +8,21 @@ groups:
   name: build-image
 jobs:
 - name: build-image
-  public: true
-  serial: true
-  plan:
-    - get: git-repo
-      trigger: true
-    - put: dockerhub-repo
-      params:
-        build: git-repo/ci_image
-- name: create-release
   plan:
   - get: git-repo
     trigger: true
-  - task: create_release
-    file: git-repo/pipeline/tasks/create-release.yml
+  - params:
+      build: git-repo/ci_image
+    put: dockerhub-repo
+  public: true
+  serial: true
+- name: create-release
+  plan:
+  - get: git_repo
+    resource: git-repo
+    trigger: true
+  - file: git_repo/pipeline/tasks/create-release.yml
+    task: create_release
 - name: deploy-wordpress
   plan:
   - aggregate:
@@ -32,10 +33,10 @@ jobs:
       path: pipeline/pipeline/bin/generate-manifest.sh
 resources:
 - name: git-repo
-  type: git
   source:
-    uri: {{pipeline-git-repo}}
     branch: {{pipeline-git-branch}}
+    uri: {{pipeline-git-repo}}
+  type: git
 - name: dockerhub-repo
   source:
     email: {{docker-hub-email}}
@@ -43,3 +44,4 @@ resources:
     repository: {{docker-create-hub-task-image}}
     username: {{docker-hub-username}}
   type: docker-image
+
