@@ -1,5 +1,7 @@
 #!/bin/bash
 set -e
-pwd
-ls pipeline/examples
-exit 345
+PWD=`pwd`
+DIRLS=`ls examples`
+touch test.txt
+echo $PWD >>test.txt
+echo $DIRLS >>test.txt
