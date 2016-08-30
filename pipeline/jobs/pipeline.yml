@@ -23,6 +23,7 @@ jobs:
   - task: create-release
     file: git-repo/pipeline/tasks/create-release.yml
 - name: deploy-wordpress
+  passed: [create-release]
   plan:
   - get: git-repo
     trigger: true
