@@ -34,5 +34,6 @@ curl -s -k --user $BOSH_USER:$BOSH_PASSWORD $BOSH_TARGET/stemcells > $stemcells
 	if [ "$exists" == "0" ] || [ "$exists" == "" ]; then
 		bosh --non-interactive --target $BOSH_TARGET --user $BOSH_USER --password $BOSH_PASSWORD upload stemcell "${stemcell_url}?v=${stemcell_version}"
 	fi
-
-bosh -t $BOSH_TARGET -u $BOSH_USER -p $BOSH_PASSWORD deploy examples/wordpress.yml
+bosh target https://192.168.50.4:25555
+bosh deployment examples/wordpress.yml
+bosh -t $BOSH_TARGET -u $BOSH_USER -p $BOSH_PASSWORD deploy
