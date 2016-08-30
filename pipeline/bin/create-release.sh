@@ -29,7 +29,7 @@ curl -s -k --user $BOSH_USER:$BOSH_PASSWORD $BOSH_TARGET/stemcells > $stemcells
 
   stemcell_name="bosh-warden-boshlite-ubuntu-trusty-go_agent"
   stemcell_version="3147"
-  stemcell_url="https://bosh.io/d/stemcells/bosh-warden-boshlite-ubuntu-trusty-go_agent\?v\=3147"
+  stemcell_url="https://bosh.io/d/stemcells/bosh-warden-boshlite-ubuntu-trusty-go_agent?v=3147"
   exists="$(cat $stemcells | jq -r 'map(select(.name == "'${stemcell_name}'" and .version == "'${stemcell_version}'")) | length')"
 	if [ "$exists" == "0" ] || [ "$exists" == "" ]; then
 		bosh --non-interactive --target $BOSH_TARGET --user $BOSH_USER --password $BOSH_PASSWORD upload stemcell "${stemcell_url}?v=${stemcell_version}"
