@@ -29,7 +29,7 @@ jobs:
     trigger: true
   - put: wordpress-deployment
     params:
-      manifest: examples/wordpress.yml
+      manifest: git-repo/examples/wordpress.yml
       releases: []
       stemcells: []
 resources:
