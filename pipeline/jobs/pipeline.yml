@@ -24,12 +24,13 @@ jobs:
     file: git-repo/pipeline/tasks/create-release.yml
 - name: deploy-wordpress
   plan:
-  - aggregate:
-    - get: pipeline
-      resource: git-repo
-      trigger: true
-    run:
-      path: pipeline/pipeline/bin/generate-manifest.sh
+  - get: git-repo
+    trigger: true
+  - put: wordpress-deployment
+    params:
+      manifest: examples/wordpress.yml
+      releases: []
+      stemcells: []
 resources:
 - name: git-repo
   type: git
@@ -43,3 +44,11 @@ resources:
     repository: {{docker-create-hub-task-image}}
     username: {{docker-hub-username}}
   type: docker-image
+- name: wordpress-deployment
+  type: bosh-deployment
+  source:
+    target: {{bosh-target}}
+    username: {{bosh-username}}
+    password: {{bosh-password}}
+    deployment: wordpress
+    ignore_ssl: true
