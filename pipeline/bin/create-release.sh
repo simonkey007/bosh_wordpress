@@ -5,6 +5,9 @@ BOSH_TARGET="https://192.168.50.4:25555"
 BOSH_USER="admin"
 BOSH_PASSWORD="admin"
 
+releases=$(mktemp /tmp/releases.XXXXXX)
+stemcells=$(mktemp /tmp/stemcells.XXXXXX)
+
 cd git-repo
 bosh -t $BOSH_TARGET -u $BOSH_USER -p $BOSH_PASSWORD create release --name wordpress --version 1.0
 
