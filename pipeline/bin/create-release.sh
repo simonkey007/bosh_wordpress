@@ -35,5 +35,4 @@ curl -s -k --user $BOSH_USER:$BOSH_PASSWORD $BOSH_TARGET/stemcells > $stemcells
 		bosh --non-interactive --target $BOSH_TARGET --user $BOSH_USER --password $BOSH_PASSWORD upload stemcell "${stemcell_url}?v=${stemcell_version}"
 	fi
 
-bosh -t $BOSH_TARGET -u $BOSH_USER -p $BOSH_PASSWORD deployment examples/wordpress.yml
-bosh -t $BOSH_TARGET -u $BOSH_USER -p $BOSH_PASSWORD deploy
+bosh -t $BOSH_TARGET -u $BOSH_USER -p $BOSH_PASSWORD deploy examples/wordpress.yml
