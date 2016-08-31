@@ -22,6 +22,10 @@ jobs:
     trigger: true
   - task: create-release
     file: git-repo/pipeline/tasks/create-release.yml
+    params:
+      BOSH_TARGET: {{bosh-target}}
+      BOSH_USER: {{bosh-username}}
+      BOSH_PASSWORD: {{bosh-password}}
 - name: deploy-wordpress
   passed: [create-release]
   plan:
