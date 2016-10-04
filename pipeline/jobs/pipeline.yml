@@ -1,59 +1,20 @@
 groups:
 - jobs:
-  - create-release
   - deploy-wordpress
   name: wordpress-release
-- jobs:
-  - build-image
-  name: build-image
-jobs:
-- name: build-image
-  public: true
-  serial: true
-  plan:
-    - get: git-repo
-      trigger: true
-    - put: dockerhub-repo
-      params:
-        build: git-repo/ci_image
-- name: create-release
+- name: deploy-wordpress 
   plan:
   - get: git-repo
     trigger: true
-  - task: create-release
-    file: git-repo/pipeline/tasks/create-release.yml
+  - task: deploy-wordpress
+    file: git-repo/pipeline/tasks/deploy-wordpress.yml
     params:
       BOSH_TARGET: {{bosh-target}}
       BOSH_USER: {{bosh-username}}
       BOSH_PASSWORD: {{bosh-password}}
-- name: deploy-wordpress
-  passed: [create-release]
-  plan:
-  - get: git-repo
-    trigger: true
-  - put: wordpress-deployment
-    params:
-      manifest: git-repo/examples/wordpress.yml
-      releases: []
-      stemcells: []
 resources:
 - name: git-repo
   type: git
   source:
     uri: {{pipeline-git-repo}}
     branch: {{pipeline-git-branch}}
-- name: dockerhub-repo
-  source:
-    email: {{docker-hub-email}}
-    password: {{docker-hub-password}}
-    repository: {{docker-create-hub-task-image}}
-    username: {{docker-hub-username}}
-  type: docker-image
-- name: wordpress-deployment
-  type: bosh-deployment
-  source:
-    target: {{bosh-target}}
-    username: {{bosh-username}}
-    password: {{bosh-password}}
-    deployment: wordpress
-    ignore_ssl: true

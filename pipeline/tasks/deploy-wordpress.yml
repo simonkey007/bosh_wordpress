@@ -6,7 +6,12 @@ image_resource:
   source: {repository: teamidefix/cf-deployments-pipeline}
 
 inputs:
-- name: git-repo
+  - name: git-repo
+
+params:
+  BOSH_TARGET:
+  BOSH_USER:
+  BOSH_PASSWORD:
 
 run:
-  path: ./git-repo/pipeline/bin/create-release.sh
+  path: ./git-repo/pipeline/bin/deploy-wordpress.sh

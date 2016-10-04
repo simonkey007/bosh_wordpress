@@ -4,10 +4,8 @@ blobs
 config/dev.yml
 config/private.yml
 releases
-pipeline/jobs/pipeline_org.yml
 .dev_builds
 .final_builds
 .idea
 *.swp
 *~
-credentials.yml
