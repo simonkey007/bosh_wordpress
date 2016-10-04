@@ -2,6 +2,7 @@ groups:
 - jobs:
   - deploy-wordpress
   name: wordpress-release
+jobs:
 - name: deploy-wordpress 
   plan:
   - get: git-repo

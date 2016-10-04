@@ -14,4 +14,4 @@ params:
   BOSH_PASSWORD:
 
 run:
-  path: ./git-repo/pipeline/bin/deploy-wordpress.sh
+  path: git-repo/pipeline/bin/deploy-wordpress.sh

@@ -31,3 +31,5 @@ To deploy the sample wordpress application edit the example deployment manifest 
     bosh upload stemcell https://bosh.io/d/stemcells/bosh-warden-boshlite-ubuntu-trusty-go_agent\?v\=3147
     bosh deployment examples/wordpress.yml
     bosh deploy
+    fly -t lite set-pipeline -c pipeline/jobs/pipeline.yml --pipeline=wordpress_deploy --load-vars-from=credentials.yml
+    go to http://192.168.100.4:8080/pipelines/wordpress_deploy
